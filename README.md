@@ -8,6 +8,7 @@
 - `list`：查看全部待办
 - `done 序号`：标记完成
 - `remove 序号`：删除待办
+- `clear`：清空所有待办
 
 ## 使用方法
 
@@ -15,6 +16,7 @@
 python todo.py add "写作业"
 python todo.py list
 python todo.py done 1
+python todo.py clear
 ```
 
 ## 技术栈

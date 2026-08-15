@@ -55,9 +55,18 @@ def remove(index):
         print("序号无效")
 
 
+def clear_todos():
+    todos = load_todos()
+    if not todos:
+        print("（还没有待办事项）")
+        return
+    save_todos([])
+    print(f"已清空全部 {len(todos)} 条待办")
+
+
 def main():
     if len(sys.argv) < 2:
-        print("用法：python todo.py <add|list|done|remove> [参数]")
+        print("用法：python todo.py <add|list|done|remove|clear> [参数]")
         return
     cmd = sys.argv[1]
     if cmd == "add" and len(sys.argv) > 2:
@@ -68,8 +77,10 @@ def main():
         done(int(sys.argv[2]))
     elif cmd == "remove" and len(sys.argv) > 2:
         remove(int(sys.argv[2]))
+    elif cmd == "clear":
+        clear_todos()
     else:
-        print("用法：python todo.py <add|list|done|remove> [参数]")
+        print("用法：python todo.py <add|list|done|remove|clear> [参数]")
 
 
 if __name__ == "__main__":
