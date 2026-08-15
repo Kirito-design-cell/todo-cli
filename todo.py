@@ -64,9 +64,17 @@ def clear_todos():
     print(f"已清空全部 {len(todos)} 条待办")
 
 
+
+
+def stats():
+    todos = load_todos()
+    total = len(todos)
+    done_count = sum(1 for t in todos if t["done"])
+    print(f"总计 {total} 条，已完成 {done_count} 条，未完成 {total - done_count} 条")
+
 def main():
     if len(sys.argv) < 2:
-        print("用法：python todo.py <add|list|done|remove|clear> [参数]")
+        print("用法：python todo.py <add|list|done|remove|clear|stats> [参数]")
         return
     cmd = sys.argv[1]
     if cmd == "add" and len(sys.argv) > 2:
@@ -77,10 +85,12 @@ def main():
         done(int(sys.argv[2]))
     elif cmd == "remove" and len(sys.argv) > 2:
         remove(int(sys.argv[2]))
+    elif cmd == "stats":
+        stats()
     elif cmd == "clear":
         clear_todos()
     else:
-        print("用法：python todo.py <add|list|done|remove|clear> [参数]")
+        print("用法：python todo.py <add|list|done|remove|clear|stats> [参数]")
 
 
 if __name__ == "__main__":
