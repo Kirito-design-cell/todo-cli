@@ -73,7 +73,7 @@ def stats():
     todos = load_todos()
     total = len(todos)
     done_count = sum(1 for t in todos if t["done"])
-    print(f"总计 {total} 条，已完成 {done_count} 条，未完成 {total - done_count} 条")
+    print(f"总计 {total} 条，已完成 {done_count} 条，未完成 {total - done_count} 条" if total else "（还没有待办事项）")
 
 def main():
     if len(sys.argv) < 2:
