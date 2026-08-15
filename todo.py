@@ -9,8 +9,11 @@ TODO_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "todos.json
 def load_todos():
     if not os.path.exists(TODO_FILE):
         return []
-    with open(TODO_FILE, "r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(TODO_FILE, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except (json.JSONDecodeError, ValueError):
+        return []
 
 
 def save_todos(todos):
